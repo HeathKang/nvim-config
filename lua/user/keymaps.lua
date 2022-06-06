@@ -23,6 +23,9 @@ vim.g.maplocalleader = " "
 keymap("n", "<leader>t", ":NvimTreeToggle<CR>", opts)
 keymap("n", "<leader>r", ":NvimTreeRefresh<CR>", opts)
 
+-- Telescope keymap
+keymap("n", "<leader>f", ":Telescope live_grep<CR>", opts)
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
