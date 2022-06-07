@@ -54,7 +54,7 @@ local function lsp_highlight_document(client)
   -- end
 end
 
-local function lsp_keymaps(bufnr)
+local function lsp_keymaps()
   local opts = { noremap = true, silent = true }
   vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -66,8 +66,7 @@ local function lsp_keymaps(bufnr)
   -- vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   -- vim.keymap.set("n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
   vim.keymap.set("n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-  vim.api.nvim_buf_set_keymap(
-    bufnr,
+  vim.keymap.set(
     "n",
     "gl",
     '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
@@ -77,14 +76,14 @@ local function lsp_keymaps(bufnr)
   vim.keymap.set("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
-
+M.keymaps = lsp_keymaps
 M.on_attach = function(client, bufnr)
 -- vim.notify(client.name .. " starting...")
 -- TODO: refactor this into a method that checks if string in list
   if client.name == "tsserver" then
     client.resolved_capabilities.document_formatting = false
   end
-  lsp_keymaps(bufnr)
+  lsp_keymaps()
   lsp_highlight_document(client)
 end
 
