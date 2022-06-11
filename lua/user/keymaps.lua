@@ -20,7 +20,6 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 -- NvimTree keymap
-keymap("n", "<leader>t", ":NvimTreeToggle<CR>", opts)
 keymap("n", "<leader>r", ":NvimTreeRefresh<CR>", opts)
 
 -- Telescope keymap
