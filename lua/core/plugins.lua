@@ -1,3 +1,22 @@
+require "configs.colorscheme"
+require "configs.cmp"
+require "configs.lsp"
+require "configs.telescope"
+require "configs.treesitter"
+require "configs.autopairs"
+require "configs.comment"
+require "configs.gitsigns"
+require "configs.nvim-tree"
+require "configs.bufferline"
+require "configs.lualine"
+require "configs.toggleterm"
+require "configs.project"
+require "configs.impatient"
+require "configs.indentline"
+require "configs.alpha"
+require "configs.whichkey"
+require "configs.autocommands"
+
 local fn = vim.fn
 
 -- Automatically install packer

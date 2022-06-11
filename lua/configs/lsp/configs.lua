@@ -13,10 +13,10 @@ lsp_installer.setup {
 
 for _, server in pairs(servers) do
 	local opts = {
-		on_attach = require("user.lsp.handlers").on_attach,
-		capabilities = require("user.lsp.handlers").capabilities,
+		on_attach = require("configs.lsp.handlers").on_attach,
+		capabilities = require("configs.lsp.handlers").capabilities,
 	}
-	local has_custom_opts, server_custom_opts = pcall(require, "user.lsp.settings." .. server)
+	local has_custom_opts, server_custom_opts = pcall(require, "configs.lsp.settings." .. server)
 	if has_custom_opts then
 	 	opts = vim.tbl_deep_extend("force", server_custom_opts, opts)
 	end
@@ -33,14 +33,14 @@ if has_custom_opts then
 end
 
 if metals_installed then
-  -- metals config 
+  -- metals config
   local metals_config = metals.bare_config()
   for key, value in pairs(metals_setting) do
 
     metals_config[key] = value
   end
   -- metals attach
-  require("user.lsp.handlers").keymaps()
+  require("configs.lsp.handlers").keymaps()
 
   local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
   vim.api.nvim_create_autocmd("FileType", {
