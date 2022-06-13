@@ -2,10 +2,10 @@ for _, source in ipairs {
   "core.options",
   "core.plugins",
   "core.keymaps"
-} do 
+} do
   local status_ok, fault = pcall(require, source)
-  if not status_ok then 
+  if not status_ok then
     vim.api.nvim_err_writeln("Failed to load" .. source .. "\n\n" .. fault)
   end
-end 
+end
 
